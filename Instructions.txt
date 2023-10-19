@@ -1,3 +1,12 @@
+TECH STACK
+
+HTML, CSS for the frontend
+Dialogflow for chatbot configuration
+PYTHON(FAST API and uvicorn) for the backend server
+Integration with Azure for hosting and deployment
+
+
+
 Directory structure
 ===================
 backend: Contains Python FastAPI backend code
