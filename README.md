@@ -11,7 +11,6 @@ Welcome to the RangeFitness Chatbot project! This project aims to enhance the us
 **Technology Stack:**
 - Dialogflow for chatbot configuration
 - FAST API for the backend server
-- MySQL for database management
 - Integration with Azure for hosting and deployment
 
 **Contact Us:**
