@@ -1,0 +1,78 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set a background color and font for the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    background-image: url(./images/pexels-leon-ardho-1552252.jpg);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Center the content in a container with a maximum width */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Style the heading */
+h1 {
+    font-size: 36px;
+    color: #acacac;
+    margin-bottom: 20px;
+}
+
+/* Style the paragraph text */
+p {
+    font-size: 16px;
+    color: #b0b0b0;
+    margin-bottom: 20px;
+}
+
+/* Style the chatbot iframe */
+iframe {
+    width: 100%;
+    max-width: 350px;
+    height: 430px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin: 20px 0;
+}
+
+/* Style the gym features list */
+h2 {
+    font-size: 24px;
+    color: #a8a8a8;
+    margin-top: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    font-size: 16px;
+    color: #9b9b9b;
+    margin-bottom: 10px;
+}
+
+/* Add hover effect for links (if you have any) */
+a {
+    color: #0070cc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #004f99;
+}
