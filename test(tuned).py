@@ -1,6 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, BackgroundTasks
 from pydantic import BaseModel
-''
+import asyncio
+
 app = FastAPI()
 
 # Create a dictionary to store user responses
@@ -11,7 +12,7 @@ class WebhookRequest(BaseModel):
     responseId: str
     queryResult: dict
 
-# Define workout plans
+# Define workout plans (unchanged)
 workout_plans = [
     {
         "name": "Beginner Weight Loss Plan",
@@ -61,25 +62,23 @@ workout_plans = [
     # You can add more workout plans as needed
 ]
 
-
 # Define a model for the response
 class Response(BaseModel):
     fulfillmentText: str
 
 # Webhook endpoint to receive and route requests
 @app.post("/")
-async def webhook_handler(webhook_request: WebhookRequest):
+async def webhook_handler(webhook_request: WebhookRequest, background_tasks: BackgroundTasks):
     query_result = webhook_request.queryResult
-    session_id = query_result.get("outputContexts")[0].get("name")  # Extract session_id
+    session_id = query_result.get("outputContexts")[0].get("name")
     intent_name = query_result.get("intent").get("displayName")
 
     suitable_plans = find_workout_plans(gender, experience_level, fitness_goal, preferred_days, equipment_preference)
 
-    if intent_name == "gym.location":
-        fulfillment_text = "Our location is: near Pankha Circle, CHURU RAJASTHAN"
+    # Implement asynchronous background tasks for non-blocking operations
+    background_tasks.add_task(process_user_input, query_result)
 
-        return Response(fulfillmentText=fulfillment_text)
-
+   
     # Extract user responses from query_result
     user_response = query_result.get("queryText")
 
@@ -117,10 +116,17 @@ async def webhook_handler(webhook_request: WebhookRequest):
     else:
          response_message = "Sorry, no workout plans match your preferences."
 
-      
 
-        # return Response(fulfillmentText=response_message)
-# Function to find suitable workout plans based on user preferences
+# Implementing asynchronous background tasks
+async def process_user_input(query_result):
+    # Extract and process user input asynchronously
+    # Store user responses asynchronously
+    await asyncio.sleep(1)  # Simulated asynchronous processing
+    user_response = query_result.get("queryText")
+    # Store user responses in the user_responses dictionary based on the intent
+    
+
+# Function to find suitable workout plans based on user preferences (unchanged)
 def find_workout_plans(gender, experience_level, fitness_goal, preferred_days, equipment_preference):
     suitable_plans = []
 
